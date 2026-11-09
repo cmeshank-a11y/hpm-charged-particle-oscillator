@@ -1,0 +1,10 @@
+method,time_ms
+ode45 (RelTol 1e-12),1900.032050
+Exact cn solution,0.868250
+Plain HPM x^(0),0.071250
+Plain HPM x^(1),0.250800
+Plain HPM x^(2),0.626950
+Plain HPM x^(4),2.464650
+HPM-FE order 0,0.031450
+HPM-FE order 1,0.085050
+HPM-FE order 3,0.271500

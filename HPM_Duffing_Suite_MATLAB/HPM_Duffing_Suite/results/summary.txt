@@ -1,0 +1,32 @@
+HPM for x'' + C x + D x^3 = 0, x(0)=1, x'(0)=0.  Run on 09-Nov-2026 09:40:32
+
+Check 1: max |u_n(closed form) - u_n(ODE)| on tau in [0,8]:
+   n=0 : 1.07e-14
+   n=1 : 4.26e-14
+   n=2 : 1.30e-13
+   n=3 : 8.12e-13
+   n=4 : 9.34e-13
+Check 2: u_n(0) = [1 0 0 0 0] ;  central-difference u_n'(0) = [0 0 0 0 0]
+Check 3: HPM-FE frequency vs exact (relative error):
+   eps=0.001 : orders 0..3 -> [1.17e-08 8.78e-12 6.66e-15 2.22e-16]
+   eps=0.01 : orders 0..3 -> [1.15e-06 8.66e-09 6.68e-11 5.3e-13]
+   eps=0.1 : orders 0..3 -> [0.000101 7.59e-06 5.85e-07 4.63e-08]
+
+Scaling check (C,D,T)=(1,1,8) vs (0.1,0.1,25.2982): max diff in plain MAE = 1.78e-15, in FE MAE = 1.55e-15
+Parameter map: plain x^(4) beats x^(0) on 61.7% of the (eps,n_p) grid
+  n_p =  1.08 : plain x4 stops improving on x0 at eps = 1 ; plain x4 MAE>1e-2 at eps = 0.316 ; FE3 MAE>1e-2 at eps = 0.891
+  n_p =  2.07 : plain x4 stops improving on x0 at eps = 0.562 ; plain x4 MAE>1e-2 at eps = 0.2 ; FE3 MAE>1e-2 at eps = 0.794
+  n_p =  5.04 : plain x4 stops improving on x0 at eps = 0.251 ; plain x4 MAE>1e-2 at eps = 0.0891 ; FE3 MAE>1e-2 at eps = 0.631
+  n_p = 10.00 : plain x4 stops improving on x0 at eps = 0.141 ; plain x4 MAE>1e-2 at eps = 0.0447 ; FE3 MAE>1e-2 at eps = 0.562
+  best plain x4: MAE=3.33e-16 at eps=0.00112, n_p=0.25
+  worst plain x4: MAE=1.28e+08 at eps=10, n_p=10.00
+  worst FE3: MAE=2.44e+00 at eps=4.47, n_p=5.21
+  worst FE0 over whole map: MAE=1.995
+
+HPM-FE frequency relative error (%) for eps = 1, 2, 4, 10, 100:
+  eps=     1 : [0.387 0.2875 0.2188 0.1719]
+  eps=     2 : [0.7669 1.141 1.707 2.726]
+  eps=     4 : [1.214 3.647 10.3 42.85]
+  eps=    10 : [1.704 13.45 69.95 NaN]
+  eps=   100 : [2.159 NaN 1447 NaN]
+  eps->inf limit of order-0 (He) frequency error: 2.220 %
